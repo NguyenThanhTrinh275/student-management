@@ -18,4 +18,8 @@ public class StudentService {
     public Student getById(String id) {
         return repository.findById(id).orElse(null); // Trả về null nếu không tìm thấy [cite: 332]
     }
+
+    public List<Student> searchByName(String keyword) {
+        return repository.findByNameContainingIgnoreCase(keyword);
+    }
 }
