@@ -1,33 +1,55 @@
-<!-- @format -->
+# Student Management System - Advanced Software Engineering
+## 1. Danh sách nhóm 
 
-\*\*Student Management System - Advanced Software Engineering
-Dự án được xây dựng trong khuôn khổ môn học Phát triển phần mềm nâng cao tại Đại học Bách Khoa TP.HCM.
+- Thành viên 1: Nguyễn Thành Trình - 2313640
 
-1. Thông tin nhóm
+- Thành viên 2: Lê Minh Mẫn - 2312040
 
-Thành viên 1: [Họ tên của bạn] - [MSSV]
+## 2. Public URL (Lab 5) 
 
-Thành viên 2: [Họ tên bạn cùng nhóm - nếu có] - [MSSV]
+Web Service URL: https://student-management-1-uysi.onrender.com/students
 
-2. Hướng dẫn chạy dự án
+## 3. Hướng dẫn chạy dự án (Local Development) 
 
-Yêu cầu hệ thống:
+### Yêu cầu hệ thống 
 
-Java Development Kit (JDK) 17 hoặc cao hơn.
+- Java Development Kit (JDK): Phiên bản 17 hoặc 21.
 
-Build Tool: Maven.
+- Build Tool: Maven.
 
-Các bước thực hiện:
+- Database: PostgreSQL.
 
-Clone repository về máy.
+### Các bước thực thi 
 
-Mở terminal tại thư mục gốc của dự án.
 
-Chạy lệnh: ./mvnw spring-boot:run.
+- Cấu hình biến môi trường: Tạo file .env tại thư mục gốc của dự án với nội dung: 
 
-Ứng dụng sẽ khởi chạy và tự động tạo file cơ sở dữ liệu student.db.
+POSTGRES_HOST=localhost  
+POSTGRES_PORT=5432  
+POSTGRES_DB=student_management  
+POSTGRES_USER=postgres  
+POSTGRES_PASSWORD=your_password_here
 
-3. Trả lời câu hỏi lý thuyết (Bài tập Lab 1)
+SPRING_DATASOURCE_URL=jdbc:postgresql://\${POSTGRES\_HOST}:\${POSTGRES\_PORT}/\${POSTGRES\_DB}  
+SPRING_DATASOURCE_USERNAME=\${POSTGRES_USER}  
+SPRING_DATASOURCE_PASSWORD=\${POSTGRES_PASSWORD}
+
+- Cài đặt Dependencies: Mở Terminal tại thư mục gốc và chạy lệnh: ./mvnw dependency:resolve 
+
+- **LƯU Ý**: Nếu bị denied thì gõ lệnh: `chmod +x mvnw` rồi chạy lại
+
+- Khởi chạy ứng dụng: Chạy lệnh: ./mvnw spring-boot:run 
+
+- **LƯU Ý**: Nếu không đọc được file .env thì chỉnh trực tiếp trong application.properties thành
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/student_management  
+spring.datasource.username=postgres  
+spring.datasource.password=your_password_here  
+
+- Truy cập giao diện: Mở trình duyệt và truy cập http://localhost:8080/students.
+
+
+## 4. Câu trả lời lý thuyết (Theory Questions) 
 
 Câu 1: Tại sao Database lại chặn thao tác chèn trùng ID?
 
@@ -40,3 +62,19 @@ Trả lời: Việc thiếu ràng buộc NOT NULL cho tên sinh viên gây mất
 Câu 3: Tại sao mỗi lần khởi động lại ứng dụng, dữ liệu cũ trong Database bị mất?
 
 Trả lời: Do cấu hình spring.jpa.hibernate.ddl-auto=create trong file application.properties. Chế độ create yêu cầu Hibernate xóa bỏ các bảng cũ (Drop) và tạo lại bảng mới (Create) mỗi khi ứng dụng Spring Boot bắt đầu chạy.
+
+## 5. Screenshot các Module (Lab 4) 
+
+Trang Danh sách Sinh viên: Hiển thị bảng dữ liệu và thanh tìm kiếm.  
+
+![Trang danh sách](screenshots/list_view.png)
+
+Trang Chi tiết Sinh viên: Hiển thị thông tin cụ thể cùng nút Sửa/Xóa.
+
+![Trang chi tiết](screenshots/detail_view.png)
+
+Form Thêm mới/Chỉnh sửa: Giao diện nhập liệu thông tin sinh viên.
+
+![Form thêm mới](screenshots/form_new_view.png)
+
+![Form chỉnh sửa](screenshots/form_edit_view.png)
