@@ -7,6 +7,7 @@
 
 ## 2. Public URL (Lab 5) 
 
+Github Repo URL: https://github.com/NguyenThanhTrinh275/student-management
 Web Service URL: https://student-management-1-uysi.onrender.com/students
 
 ## 3. Hướng dẫn chạy dự án (Local Development) 
